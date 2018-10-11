@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kubectl --as=$USER --as-group=system:masters "$@"
