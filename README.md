@@ -55,7 +55,7 @@ This project does not really introduce a kubectl plugin, but a concept
 of how to provide a sudo like system for kubernetes access.
 
 To reduce the surface of unwanted or unexpected actions you can reduce the default priviledges
-a cluster administrator has to the level of an unpriviledged account and give them the ability to impersonate users and groups.
+a cluster administrator has to the level of an unprivileged account and give them the ability to impersonate users and groups.
 When cluster administrators need to do more priviledged actions, they can switch
 the group to `system:masters` or another group or user according to the needed privilidge level.
 
