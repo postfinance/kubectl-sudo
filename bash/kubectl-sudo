@@ -1,9 +1,6 @@
 #!/bin/sh
 
-BC=$'\e[4m'
-EC=$'\e[0m'
-
-read -p "WARNING: Currently in context ${BC}$(kubectl config current-context)${EC}. Continue? (y/N) " yn
+read -p "WARNING: Currently in context [4m$(kubectl config current-context)[0m. Continue? (y/N) " yn
 case $yn in
     [Yy]* ) ;;
     * ) exit 1;;
