@@ -1,9 +1,12 @@
 #!/bin/sh
 
-read -p "WARNING: Currently in context [4m$(kubectl config current-context)[0m. Continue? (y/N) " yn
-case $yn in
-    [Yy]* ) ;;
-    * ) exit 1;;
-esac
+KUBECTL_SUDO_PROMPT=${KUBECTL_SUDO_PROMPT:-true}
+if [ "$KUBECTL_SUDO_PROMPT" = true ]; then
+    read -p "WARNING: Currently in context [4m$(kubectl config current-context)[0m. Continue? (y/N) " yn
+    case $yn in
+        [Yy]* ) ;;
+        * ) exit 1;;
+    esac
+fi
 
 kubectl --as=$USER --as-group=system:masters "$@"
