@@ -2,7 +2,7 @@
 
 KUBECTL_SUDO_PROMPT=${KUBECTL_SUDO_PROMPT:-false}
 if [ "$KUBECTL_SUDO_PROMPT" = true ]; then
-    read -p "WARNING: Currently in context (kubectl config current-context). Continue? (y/N) " yn
+    read -p "WARNING: Currently in context $(kubectl config current-context). Continue? (y/N) " yn
     case $yn in
         [Yy]* ) ;;
         * ) exit 1;;
