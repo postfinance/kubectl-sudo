@@ -9,4 +9,25 @@ if [ "$KUBECTL_SUDO_PROMPT" = true ]; then
     esac
 fi
 
-kubectl --as=$USER --as-group=system:masters "$@"
+NEW_ARGS=""
+PLUGIN_NAME=""
+COMMAND=""
+
+for arg in "$@"
+do
+    if [ ${arg} != "--"* ] && [ -z "${COMMAND}" ]; then
+        COMMAND=${arg}
+    fi
+    plugin_path=$(which "kubectl-${COMMAND}" 2>/dev/null)
+    if [ -x "${plugin_path}" ] && [ -z "${PLUGIN_NAME}" ]; then
+        PLUGIN_NAME=$arg
+        continue
+    fi
+    NEW_ARGS="${NEW_ARGS} ${arg}"
+done
+
+if [ -z "${PLUGIN_NAME}" ]; then
+    kubectl --as=${USER} --as-group=system:masters "$@"
+else
+    kubectl ${PLUGIN_NAME} --as=${USER} --as-group=system:masters ${NEW_ARGS}
+fi
