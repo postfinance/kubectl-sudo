@@ -109,3 +109,6 @@ Works on systems with `/bin/sh` and kubectl >= 1.12. `kubectl` must be inside `$
 ## Configuration
 This plugin can be configured using environment variables:
 - `KUBECTL_SUDO_PROMPT=true` whether or not the plugin prompts the user before executing the kubectl command. Default value is `false`.
+
+## Similar projects
+* [cloudogu/sudo-kubeconfig](https://github.com/cloudogu/sudo-kubeconfig): Create a sudo kubeconfig for your current kubernetes context.
