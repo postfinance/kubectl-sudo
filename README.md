@@ -126,4 +126,5 @@ This plugin can be configured using environment variables:
 - `KUBECTL_SUDO_PROMPT=true` whether or not the plugin prompts the user before executing the kubectl command. Default value is `false`.
 
 ## Similar projects
+* [cloudogu/helm-sudo](https://github.com/cloudogu/helm-sudo): Same functionality as kubectl-sudo for [helm](https://helm.sh/)
 * [cloudogu/sudo-kubeconfig](https://github.com/cloudogu/sudo-kubeconfig): Create a sudo kubeconfig for your current kubernetes context.
