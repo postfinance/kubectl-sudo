@@ -27,7 +27,7 @@ do
 done
 
 if [ -z "${PLUGIN_NAME}" ]; then
-    kubectl --as=${USER} --as-group=system:masters "$@"
+    exec kubectl --as=${USER} --as-group=system:masters "$@"
 else
-    kubectl ${PLUGIN_NAME} --as=${USER} --as-group=system:masters ${NEW_ARGS}
+    exec kubectl ${PLUGIN_NAME} --as=${USER} --as-group=system:masters ${NEW_ARGS}
 fi
