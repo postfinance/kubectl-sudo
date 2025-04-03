@@ -27,7 +27,15 @@ do
 done
 
 if [ -z "${PLUGIN_NAME}" ]; then
-    exec kubectl --as=${USER} --as-group=system:masters "$@"
+    if command -v kubecolor >/dev/null; then
+        exec kubecolor --as=${USER} --as-group=system:masters "$@"
+    else
+        exec kubectl --as=${USER} --as-group=system:masters "$@"
+    fi
 else
-    exec kubectl ${PLUGIN_NAME} --as=${USER} --as-group=system:masters ${NEW_ARGS}
+    if command -v kubecolor >/dev/null; then
+        exec kubecolor ${PLUGIN_NAME} --as=${USER} --as-group=system:masters ${NEW_ARGS}
+    else
+        exec kubectl ${PLUGIN_NAME} --as=${USER} --as-group=system:masters ${NEW_ARGS}
+    fi
 fi
